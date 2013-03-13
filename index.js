@@ -16,7 +16,7 @@
         });
 
         if (_.isObject(this.config.collection)){
-            this.collection = collection; 
+            this.collection = this.config.collection; 
         } else {
             throw new Error('simpleuser error: must pass in a mongo database collection');
         }
