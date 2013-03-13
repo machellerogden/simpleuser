@@ -41,14 +41,14 @@
         };
 
         // Removes users email and password from session data
-        this.logout = function(req, res, next){
+        this.logoutUser = function(req, res, next){
             delete req.session.email;
             delete req.session.password;
             next();
         };
 
         // Save user record
-        this.save = function(req, res, next){
+        this.saveUser = function(req, res, next){
 
             var user = {},
                 users = constructor.collection;
@@ -82,7 +82,7 @@
         };
 
         // Authenticate user
-        this.authenticate = function(req, res, next){
+        this.authenticateUser = function(req, res, next){
 
             // don't let the browser pull this response from cache
             if (!res.getHeader('Cache-Control')) {
@@ -250,7 +250,16 @@
         };
 
         // User must have login - middleware stack
-        this.load = [ this.setSession, this.checkSession, this.loadUser ];
+        this.mustHaveLogin = [ this.setSession, this.checkSession, this.loadUser ];
+
+        // Protect resource - middleware stack
+        this.authenticate = [ this.setSession, this.checkSession, this.loadUser, this.authenticateUser ];
+
+        // Save user - middleware stack
+        this.save = [ this.setSession, this.checkSession, this.save, this.saved ];
+
+        // Logout user - middleware stack
+        this.logout = [ this.logoutUser, this.loggedout ];
 
     }
 
