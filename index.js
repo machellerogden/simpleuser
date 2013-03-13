@@ -50,8 +50,10 @@
 
         // Removes users email and password from session data
         this.logoutUser = function(req, res, next){
-            delete req.session.email;
-            delete req.session.password;
+            if(_.isObject(req.session)){
+                delete req.session.email;
+                delete req.session.password;
+            }
             next();
         };
 
