@@ -256,10 +256,10 @@
         this.authenticate = [ this.setSession, this.checkSession, this.loadUser, this.authenticateUser ];
 
         // Save user - middleware stack
-        this.save = [ this.setSession, this.checkSession, this.saveUser, this.saved ];
+        this.save = [ this.setSession, this.checkSession, this.saveUser ];
 
-        // Logout user - middleware stack
-        this.logout = [ this.logoutUser, this.loggedOut ];
+        // Logout user alias
+        this.logout = this.logoutUser;
 
     }
 
