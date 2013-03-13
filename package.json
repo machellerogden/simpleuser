@@ -1,0 +1,14 @@
+{
+    "name": "simpleuser",
+    "description": "Basic user authentication middleware for Express",
+    "author": "Mac Heller-Ogden <mac@machellerogden.com>",
+    "version": "0.0.1",
+    "repository": {
+        "url": "https://github.com/pixeldreamer/simpleuser.git"
+    },
+    "dependencies": {
+        "bcrypt": "0.7.4",
+        "underscore": "1.4.4"
+    },
+    "engine": "node >= 0.8.18"
+}

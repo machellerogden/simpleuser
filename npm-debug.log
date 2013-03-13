@@ -1,0 +1,99 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/pixeldreamer/.nvm/v0.8.18/bin/node',
+1 verbose cli   '/Users/pixeldreamer/.nvm/v0.8.18/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@1.2.2
+3 info using node@v0.8.18
+4 verbose publish [ '.' ]
+5 verbose read json /Users/pixeldreamer/Apps/simpleuser/package.json
+6 warn package.json SimpleUser@0.0.1 No README.md file found!
+7 verbose cache add [ '.', null ]
+8 verbose cache add name=undefined spec="." args=[".",null]
+9 verbose parsed url { pathname: '.', path: '.', href: '.' }
+10 silly lockFile 3a52ce78- .
+11 verbose lock . /Users/pixeldreamer/.npm/3a52ce78-.lock
+12 verbose read json package.json
+13 verbose tar pack [ '/var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/tmp.tgz',
+13 verbose tar pack   '.' ]
+14 verbose tarball /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/tmp.tgz
+15 verbose folder .
+16 info prepublish SimpleUser@0.0.1
+17 silly lockFile 803e49c2-72929-0-5413082456216216-tmp-tgz /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/tmp.tgz
+18 verbose lock /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/tmp.tgz /Users/pixeldreamer/.npm/803e49c2-72929-0-5413082456216216-tmp-tgz.lock
+19 silly lockFile 803e49c2-72929-0-5413082456216216-tmp-tgz /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/tmp.tgz
+20 verbose tar unpack /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/tmp.tgz
+21 silly lockFile 534f3472-72929-0-5413082456216216-package /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/package
+22 verbose lock /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/package /Users/pixeldreamer/.npm/534f3472-72929-0-5413082456216216-package.lock
+23 silly gunzTarPerm modes [ '755', '644' ]
+24 silly gunzTarPerm extractEntry package.json
+25 silly gunzTarPerm extractEntry README
+26 silly gunzTarPerm extractEntry simpleuser.js
+27 verbose read json /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/package/package.json
+28 silly lockFile 534f3472-72929-0-5413082456216216-package /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/package
+29 verbose from cache /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/package/package.json
+30 verbose tar pack [ '/Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz',
+30 verbose tar pack   '/var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/package' ]
+31 verbose tarball /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz
+32 verbose folder /var/folders/lf/8714h46x0n9ch5vbs9hsv4280000gn/T/npm-23924/1363203272929-0.5413082456216216/package
+33 silly lockFile 474ebb98-npm-SimpleUser-0-0-1-package-tgz /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz
+34 verbose lock /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz /Users/pixeldreamer/.npm/474ebb98-npm-SimpleUser-0-0-1-package-tgz.lock
+35 silly lockFile 474ebb98-npm-SimpleUser-0-0-1-package-tgz /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz
+36 silly lockFile a2bebe92-mer-npm-SimpleUser-0-0-1-package /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package
+37 verbose lock /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package /Users/pixeldreamer/.npm/a2bebe92-mer-npm-SimpleUser-0-0-1-package.lock
+38 silly lockFile a2bebe92-mer-npm-SimpleUser-0-0-1-package /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package
+39 verbose tar unpack /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz
+40 silly lockFile a2bebe92-mer-npm-SimpleUser-0-0-1-package /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package
+41 verbose lock /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package /Users/pixeldreamer/.npm/a2bebe92-mer-npm-SimpleUser-0-0-1-package.lock
+42 silly gunzTarPerm modes [ '755', '644' ]
+43 silly gunzTarPerm extractEntry package.json
+44 silly gunzTarPerm extractEntry README
+45 silly gunzTarPerm extractEntry simpleuser.js
+46 verbose read json /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package/package.json
+47 silly lockFile a2bebe92-mer-npm-SimpleUser-0-0-1-package /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package
+48 silly shasum updated bytes 2114
+49 info shasum 11bfa612f3c5859a0bc164b9410cf24977c66c10
+49 info shasum /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz
+50 verbose from cache /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package/package.json
+51 verbose chmod /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz 644
+52 verbose chown /Users/pixeldreamer/.npm/SimpleUser/0.0.1/package.tgz [ 501, 20 ]
+53 silly lockFile 3a52ce78- .
+54 silly publish { name: 'SimpleUser',
+54 silly publish   description: 'Simple user authentication middleware for Express',
+54 silly publish   author: { name: 'Mac Heller-Ogden', email: 'mac@machellerogden.com' },
+54 silly publish   version: '0.0.1',
+54 silly publish   repository: { url: 'https://github.com/pixeldreamer/SimpleUser.git' },
+54 silly publish   dependencies: { bcrypt: '0.7.4', underscore: '1.4.4' },
+54 silly publish   engine: 'node >= 0.8.18',
+54 silly publish   readme: 'ERROR: No README.md file found!',
+54 silly publish   readmeFilename: 'README',
+54 silly publish   _id: 'SimpleUser@0.0.1',
+54 silly publish   dist: { shasum: '11bfa612f3c5859a0bc164b9410cf24977c66c10' },
+54 silly publish   _from: '.' }
+55 verbose url raw SimpleUser
+56 verbose url resolving [ 'https://registry.npmjs.org/', './SimpleUser' ]
+57 verbose url resolved https://registry.npmjs.org/SimpleUser
+58 info trying registry request attempt 1 at 14:34:33
+59 http PUT https://registry.npmjs.org/SimpleUser
+60 http 403 https://registry.npmjs.org/SimpleUser
+61 error publish Failed PUT response 403
+62 error Error: forbidden New packages must have all-lowercase names: SimpleUser
+62 error     at RegClient.<anonymous> (/Users/pixeldreamer/.nvm/v0.8.18/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:259:14)
+62 error     at Request.init.self.callback (/Users/pixeldreamer/.nvm/v0.8.18/lib/node_modules/npm/node_modules/request/main.js:120:22)
+62 error     at Request.EventEmitter.emit (events.js:99:17)
+62 error     at Request.<anonymous> (/Users/pixeldreamer/.nvm/v0.8.18/lib/node_modules/npm/node_modules/request/main.js:648:16)
+62 error     at Request.EventEmitter.emit (events.js:126:20)
+62 error     at IncomingMessage.Request.start.self.req.self.httpModule.request.buffer (/Users/pixeldreamer/.nvm/v0.8.18/lib/node_modules/npm/node_modules/request/main.js:610:14)
+62 error     at IncomingMessage.EventEmitter.emit (events.js:126:20)
+62 error     at IncomingMessage._emitEnd (http.js:366:10)
+62 error     at HTTPParser.parserOnMessageComplete [as onMessageComplete] (http.js:149:23)
+62 error     at CleartextStream.socketOnData [as ondata] (http.js:1447:20)
+63 error If you need help, you may report this log at:
+63 error     <http://github.com/isaacs/npm/issues>
+63 error or email it to:
+63 error     <npm-@googlegroups.com>
+64 error System Darwin 11.4.2
+65 error command "/Users/pixeldreamer/.nvm/v0.8.18/bin/node" "/Users/pixeldreamer/.nvm/v0.8.18/bin/npm" "publish"
+66 error cwd /Users/pixeldreamer/Apps/simpleuser
+67 error node -v v0.8.18
+68 error npm -v 1.2.2
+69 verbose exit [ 1, true ]
