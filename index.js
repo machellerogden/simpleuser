@@ -236,7 +236,7 @@
         };
 
         // Logged out
-        this.loggedout = function(req, res){
+        this.loggedOut = function(req, res){
             if (req.accepts('html')) {
                 res.render('login', { title: 'Logged Out', msg: 'You are now logged out' });
             } else if (req.accepts('json')) {
@@ -256,10 +256,10 @@
         this.authenticate = [ this.setSession, this.checkSession, this.loadUser, this.authenticateUser ];
 
         // Save user - middleware stack
-        this.save = [ this.setSession, this.checkSession, this.save, this.saved ];
+        this.save = [ this.setSession, this.checkSession, this.saveUser, this.saved ];
 
         // Logout user - middleware stack
-        this.logout = [ this.logoutUser, this.loggedout ];
+        this.logout = [ this.logoutUser, this.loggedOut ];
 
     }
 

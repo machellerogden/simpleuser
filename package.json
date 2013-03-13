@@ -2,7 +2,7 @@
     "name": "simpleuser",
     "description": "Basic user authentication middleware for Express",
     "author": "Mac Heller-Ogden <mac@machellerogden.com>",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "repository": {
         "url": "https://github.com/pixeldreamer/simpleuser.git"
     },
