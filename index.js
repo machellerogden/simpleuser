@@ -14,7 +14,7 @@
         }
 
         // Load user record
-        this.load = function(req, res, next){
+        this.loadUser = function(req, res, next){
             var email = false,
                 users = constructor.collection;
             if (req.session.email) {
@@ -250,7 +250,7 @@
         };
 
         // User must have login - middleware stack
-        this.mustHaveLogin = [ this.setSession, this.checkSession ];
+        this.load = [ this.setSession, this.checkSession, this.loadUser ];
 
     }
 
