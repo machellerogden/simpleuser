@@ -11,6 +11,7 @@
         "underscore": "1.4.4"
     },
     "files": [
+        "index.js",
         "views/"
     ],
     "engine": "node >= 0.8.18"

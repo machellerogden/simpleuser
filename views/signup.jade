@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p #{msg}
-  form(method="POST",action="/user")
+  form(method="POST",action="/signup")
     label(for="email") Email
     input(type="email",name="email",id="email")
     br
