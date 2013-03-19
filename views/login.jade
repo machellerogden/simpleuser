@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p #{msg}
+  form(method="POST",action="/login")
+    label(for="email") Email
+    input(type="email",name="email",id="email")
+    br
+    label(for="password") Password
+    input(type="password",name="password",id="password")
+    br
+    input(type="submit",value="Go")
+

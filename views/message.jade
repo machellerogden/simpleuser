@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  p #{msg}
+  form(method="POST",action="logout")
+    input(type="submit",value="Logout")
+
