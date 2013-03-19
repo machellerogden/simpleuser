@@ -5,31 +5,41 @@
 
     function SimpleUser(config){
 
-        var constructor = this;
+        // Reference the constructor
+        var simpleUser = this;
 
-        this.config = _.defaults(config, {
+        this.root = __dirname;
+
+        // Set defaults
+        var defaults = {
             'collection': undefined,
-            'defaultTemplate': 'default',
-            'loginTemplate': 'login',
-            'signupTemplate': 'signup',
-            'errorTemplate': 'error'
-        });
+            'messageTemplate': __dirname + '/views/message',
+            'loginTemplate': __dirname + '/views/login',
+            'signupTemplate': __dirname + '/views/signup',
+            'errorTemplate': __dirname + '/views/error'
+        };
 
-        if (_.isObject(this.config.collection)){
-            this.collection = this.config.collection; 
+        // Collection is required
+        if (_.has(config, 'collection')) {
+            // extend constructor with filtered and defaulted config
+            _.extend(this, _.defaults(_.pick(config, _.keys(defaults)), defaults));
+            if (this.defaultTemplate === defaults.defaultTemplate) {
+                console.log('SimpleUser Notice: USING DEFAULT TEMPLATES. Default templates require Jade template engine. Define custom templates to use a different template engine.');
+            }
         } else {
-            throw new Error('simpleuser error: must pass in a mongo database collection');
+            // no collection in config - throwing error
+            throw new Error('SimpleUser Error: Must pass in a mongo database collection');
         }
 
         // Load user record
         this.loadUser = function(req, res, next){
             var email = false,
-                users = constructor.collection;
+                users = simpleUser.collection;
             if (req.session.email) {
                 email = req.session.email;
                 users.findOne({ email: email }, function (err, result) {
                     if (result) {
-                        req.user = constructor.cleanUid(result); // store user for later routes
+                        req.user = simpleUser.cleanUid(result); // store user for later routes
                         next();
                     } else {
                         req.user = false;
@@ -61,7 +71,7 @@
         this.saveUser = function(req, res, next){
 
             var user = {},
-                users = constructor.collection;
+                users = simpleUser.collection;
 
             // don't let the browser pull this response from cache
             if (!res.getHeader('Cache-Control')){
@@ -69,7 +79,7 @@
             }
 
             if (req.user) {
-                constructor.userAlreadyExists(req, res);
+                simpleUser.userAlreadyExists(req, res);
             } else {
                 var salt = bcrypt.genSaltSync(10);
                 var hash = bcrypt.hashSync(req.session.password, salt);
@@ -78,14 +88,14 @@
                     if (!err) {
                         users.findOne({ email : user.email }, function (err, result) {
                             if (!err) {
-                                req.user = constructor.cleanUid(result); // store user for later routes
+                                req.user = simpleUser.cleanUid(result); // store user for later routes
                                 next();
                             } else {
-                                constructor.saveError(req, res);
+                                simpleUser.saveError(req, res);
                             }
                         });
                     } else {
-                        constructor.saveError(req, res);
+                        simpleUser.saveError(req, res);
                     }
                 });
             }
@@ -106,12 +116,12 @@
                         next();
                     } else {
                         // user credentials do not authenticate, sending 401
-                        constructor.wrongLogin(req, res);
+                        simpleUser.wrongLogin(req, res);
                     }
                 });
             } else {
                 // user does not exist, sending 401
-                constructor.unauthorized(req, res);
+                simpleUser.unauthorized(req, res);
             }
         };
 
@@ -148,7 +158,7 @@
                     res.setHeader('Cache-Control', 'no-cache');
                 }
                 // send 401
-                constructor.unauthorized(req, res);
+                simpleUser.unauthorized(req, res);
             }
         };
 
@@ -156,7 +166,7 @@
         this.unauthorized = function(req, res){
             res.status(401);
             if (req.accepts('html')) {
-                res.render(constructor.config.errorTemplate, { title: 'Unauthorized', msg: 'You are not authorized to access this resource.' });
+                res.render(simpleUser.errorTemplate, { title: 'Unauthorized', msg: 'You are not authorized to access this resource.' });
             } else if (req.accepts('json')) {
               res.json({
                   status: 'Unauthorized',
@@ -171,7 +181,7 @@
         this.wrongLogin = function(req, res){
             res.status(401);
             if (req.accepts('html')) {
-                res.render(constructor.config.loginTemplate, { title: 'Unauthorized', msg: 'The login you supplied does not authenticate.' });
+                res.render(simpleUser.loginTemplate, { title: 'Unauthorized', msg: 'The login you supplied does not authenticate.' });
             } else if (req.accepts('json')) {
               res.json({
                   status: 'Unauthorized',
@@ -185,7 +195,7 @@
         // Authenticated
         this.authenticated = function(req, res){
             if (req.accepts('html')) {
-                res.render(constructor.config.defaultTemplate, { title: 'Authenticated', msg: 'You are now logged in' });
+                res.render(simpleUser.defaultTemplate, { title: 'Authenticated', msg: 'You are now logged in' });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'OK',
@@ -203,7 +213,7 @@
         this.userAlreadyExists = function(req, res){
             res.status(403);
             if (req.accepts('html')) {
-                res.render(constructor.config.errorTemplate, { title: 'Forbidden', msg: 'User already exists' });
+                res.render(simpleUser.errorTemplate, { title: 'Forbidden', msg: 'User already exists' });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'Forbidden',
@@ -218,7 +228,7 @@
         this.saveError = function(req, res){
             res.status(500);
             if (req.accepts('html')) {
-                res.render(constructor.config.errorTemplate, { title: 'Server Error', msg: 'Sorry! Something went wrong while saving you account. Please contact support if you have any further trouble.' });
+                res.render(simpleUser.errorTemplate, { title: 'Server Error', msg: 'Sorry! Something went wrong while saving you account. Please contact support if you have any further trouble.' });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'Server Error',
@@ -231,7 +241,7 @@
         // Saved
         this.saved = function(req, res){
             if (req.accepts('html')) {
-                res.render(constructor.config.defaultTemplate, { title: 'All set!', msg: 'User saved' });
+                res.render(simpleUser.messageTemplate, { title: 'All set!', msg: 'User saved' });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'OK',
@@ -248,7 +258,7 @@
         // Logged out
         this.loggedOut = function(req, res){
             if (req.accepts('html')) {
-                res.render(constructor.config.loginTemplate, { title: 'Logged Out', msg: 'You are now logged out' });
+                res.render(simpleUser.loginTemplate, { title: 'Logged Out', msg: 'You are now logged out' });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'Logged Out',
