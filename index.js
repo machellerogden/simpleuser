@@ -23,8 +23,8 @@
         if (_.has(config, 'collection')) {
             // extend constructor with filtered and defaulted config
             _.extend(this, _.defaults(_.pick(config, _.keys(defaults)), defaults));
-            if (this.defaultTemplate === defaults.defaultTemplate) {
-                console.log('SimpleUser Notice: USING DEFAULT TEMPLATES. Default templates require Jade template engine. Define custom templates to use a different template engine.');
+            if (this.messageTemplate === defaults.messageTemplate) {
+                console.info('[SimpleUser] Using default templates. Default templates require Jade template engine. Define custom templates to use a different template engine.');
             }
         } else {
             // no collection in config - throwing error
