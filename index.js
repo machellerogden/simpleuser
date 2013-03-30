@@ -166,13 +166,14 @@
         this.unauthorized = function(req, res){
             res.status(401);
             if (req.accepts('html')) {
-                res.render(simpleUser.errorTemplate, { title: 'Unauthorized', msg: 'You are not authorized to access this resource.' });
+                res.render(simpleUser.errorTemplate, { title: 'Unauthorized', msg: 'You are not authorized to access this resource.', redirect: req.url });
             } else if (req.accepts('json')) {
               res.json({
                   status: 'Unauthorized',
                   code: 401,
                   msg: 'You are not authorized to access this resource.',
-                  success: false
+                  success: false,
+                  redirect: req.url
               });
             }
         };
@@ -181,13 +182,14 @@
         this.wrongLogin = function(req, res){
             res.status(401);
             if (req.accepts('html')) {
-                res.render(simpleUser.loginTemplate, { title: 'Unauthorized', msg: 'The login you supplied does not authenticate.' });
+                res.render(simpleUser.loginTemplate, { title: 'Unauthorized', msg: 'The login you supplied does not authenticate.', redirect: req.url });
             } else if (req.accepts('json')) {
               res.json({
                   status: 'Unauthorized',
                   code: 401,
                   msg: 'The login you supplied does not authenticate.',
-                  success: false
+                  success: false,
+                  redirect: req.url
               });
             }
         };
@@ -195,13 +197,14 @@
         // Authenticated
         this.authenticated = function(req, res){
             if (req.accepts('html')) {
-                res.render(simpleUser.defaultTemplate, { title: 'Authenticated', msg: 'You are now logged in' });
+                res.render(simpleUser.messageTemplate, { title: 'Authenticated', msg: 'You are now logged in', redirect: req.url });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'OK',
                     code: 200,
                     msg: 'Authenticated',
                     success: true,
+                    redirect: req.url,
                     data: {
                         uid: req.user.uid
                     }
@@ -213,13 +216,14 @@
         this.userAlreadyExists = function(req, res){
             res.status(403);
             if (req.accepts('html')) {
-                res.render(simpleUser.errorTemplate, { title: 'Forbidden', msg: 'User already exists' });
+                res.render(simpleUser.errorTemplate, { title: 'Forbidden', msg: 'User already exists', redirect: req.url });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'Forbidden',
                     code: '403',
                     msg: 'User already exists',
-                    success: false
+                    success: false,
+                    redirect: req.url
                 });
             }
         };
@@ -241,13 +245,14 @@
         // Saved
         this.saved = function(req, res){
             if (req.accepts('html')) {
-                res.render(simpleUser.messageTemplate, { title: 'All set!', msg: 'User saved' });
+                res.render(simpleUser.messageTemplate, { title: 'All set!', msg: 'User saved', redirect: req.url });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'OK',
                     code: 200,
                     msg: 'User saved',
                     success: true,
+                    redirect: req.url,
                     data: {
                         uid: req.user.uid
                     }
@@ -258,13 +263,14 @@
         // Logged out
         this.loggedOut = function(req, res){
             if (req.accepts('html')) {
-                res.render(simpleUser.loginTemplate, { title: 'Logged Out', msg: 'You are now logged out' });
+                res.render(simpleUser.loginTemplate, { title: 'Logged Out', msg: 'You are now logged out', redirect: req.url });
             } else if (req.accepts('json')) {
                 res.json({
                     status: 'Logged Out',
                     code: 200,
                     msg: 'You are now logged out',
-                    success: true
+                    success: true,
+                    redirect: req.url
                 });
             }
         };
