@@ -275,6 +275,14 @@
             }
         };
 
+        this.redirectOr = function(req, res, next){
+            if (req.body.redirect && req.body.redirect !== req.url) {
+                res.redirect(req.body.redirect);
+            } else {
+                next();
+            }
+        };
+
         // User must have login - middleware stack
         this.mustHaveLogin = [ this.setSession, this.checkSession, this.loadUser ];
 
